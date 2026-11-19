@@ -25,7 +25,7 @@ Die Firmware gehört nicht in dieses Repo. Sie liegt in den Projekt-Repos, weil 
 | Funkfüürli (Notfallradio für Kinder, UKW, MW, KW) | RX-Board mit Si4732 | [Funkfuerli](https://github.com/MaShaoDe/Funkfuerli), [RX-Board-Si4732](https://github.com/MaShaoDe/RX-Board-Si4732) |
 | Wellenjäger (Ham-SDR für Prüfungskandidaten) | eigenes SDR-Modul, später | [Wellenjaeger](https://github.com/MaShaoDe/Wellenjaeger) |
 
-Die Basis wird für das Funkfüürli gebaut (Kostenziel 30 bis 60 CHF pro Bausatz). Der Wellenjäger nutzt dieselbe Hardware über den Stecker RX, die reservierten Pins und Reserve beim Regler. Bauteile, die nur der Wellenjäger braucht, kommen nicht auf die Basis.
+Die Basis wird für das Funkfüürli gebaut. Der Wellenjäger nutzt dieselbe Hardware über den Stecker RX, die reservierten Pins und Reserve beim Regler. Bauteile, die nur der Wellenjäger braucht, kommen nicht auf die Basis.
 
 Wer ein eigenes Funkgerät mit ESP32 bauen will, kann die Platine forken oder nachbauen und ein eigenes Funkmodul auf den Stecker RX setzen.
 

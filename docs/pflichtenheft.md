@@ -5,7 +5,7 @@ Ablage: dieses Repo, Datei `docs/pflichtenheft.md`. Das Basisboard heisst im Fun
 ## 1. Zweck und Abgrenzung
 
 * Das Basisboard trägt ESP32-S3, Display, Encoder, Strom und Audio. Das **Funkmodul** steckt über den Stecker **RX** auf (Funkfüürli: RX-Board mit Si4732, Wellenjäger: eigenes SDR-Modul).
-* Es wird **für das Funkfüürli gebaut** (Kostenziel 30 bis 60 CHF, kleines Gehäuse). Der Wellenjäger nutzt dieselbe Hardware, bekommt aber nur Steckerpins, reservierte GPIOs und Reserve beim Regler. Wellenjäger-Bauteile kommen nicht aufs Basisboard.
+* Es wird **für das Funkfüürli gebaut** (kleines Gehäuse). Der Wellenjäger nutzt dieselbe Hardware, bekommt aber nur Steckerpins, reservierte GPIOs und Reserve beim Regler. Wellenjäger-Bauteile kommen nicht aufs Basisboard.
 * Firmware gehört nicht ins Basisboard-Repo, sie bleibt in den Projekt-Repos (verschieden lizenziert). Ein gemeinsamer Kern ist möglich, siehe Abschnitt 5.
 * Bestellung erst nach bestandenem Lochraster-Test (Entscheid 2026-11-15).
 
