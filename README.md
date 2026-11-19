@@ -13,7 +13,7 @@ Die Funkbasis ist die gemeinsame Basisplatine für Funkgeräte mit ESP32-S3. Sie
 * **Steuerung:** ESP32-S3-DevKitC-1 (N16R8) auf Buchsenleisten. Das Modul bleibt wiederverwendbar.
 * **Bedienung:** Display 2.0" ST7789V (240x320) und Drehencoder mit Taster.
 * **Strom:** 1 Zelle (14650 oder flacher LiPo), Linearregler, Verpolschutz, Hauptschalter, Laden über USB-C mit linearem Ladechip. Kein Schaltregler, damit MW und KW ruhig bleiben.
-* **Audio:** Verstärker PAM8403 (Modul), Lautsprecher, 3.5-mm-Klinke mit Schaltkontakt, Line-Out, Steckplatz für ein Bluetooth-Sendemodul (optional).
+* **Audio:** Verstärker PAM8403 (Modul), Lautsprecher, 3.5-mm-Klinke mit Schaltkontakt über Kopfhörerverstärker (der Funkchip liefert nur Line-Pegel), Steckplatz für ein Bluetooth-Sendemodul (optional).
 * **Funkmodul:** Stecker RX mit I2C, Reset, Ton links und rechts, 3.3 V, plus reservierte I2S-Leitungen.
 
 Die Firmware gehört nicht in dieses Repo. Sie liegt in den Projekt-Repos, weil sie je Gerät anders ist und anders lizenziert ist.

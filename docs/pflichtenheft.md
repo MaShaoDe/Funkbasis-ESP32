@@ -21,11 +21,11 @@ Priorität: **M** = muss, **S** = soll, **K** = kann.
 | BB4 | Drehencoder mit Taster, Entprell-RC | M | F2 |
 | BB5 | Stromversorgung für 1 Zelle (3.0 bis 4.2 V). Pads für 14650-Halter und JST für LiPo 103665, nur einer bestückt | M | T5, O5 |
 | BB6 | Hauptschalter, Verpolschutz mit Schottky 1N5819 in der Lastleitung, Pufferkondensator, Tiefentladeschutz | M | G6 |
-| BB7 | LDO 3.3 V, mindestens 500 mA, kleine Dropout-Spannung, Ferrit am Ausgang zum Funkmodul. Einspeisung am 3V3-Pin des ESP32 (Regler des Moduls umgehen, Schutz gegen Rückspeisung über USB) | M | Entscheid 2026-11-15. MCP1700 (250 mA) reicht nicht. Kandidat LF33CV |
+| BB7 | LDO 3.3 V, mindestens 500 mA, kleine Dropout-Spannung, Ferrit am Ausgang zum Funkmodul. Einspeisung am 3V3-Pin des ESP32 (Regler des Moduls umgehen, Schutz gegen Rückspeisung über USB) | M | Entscheid 2026-11-15. MCP1700 (250 mA) reicht nicht. Vorschlag **AP2112K-3.3** (600 mA, Dropout typisch 250 mV, 50 µV Rauschen), LF33CV nur Notlösung. Siehe Projektdefinition T5 |
 | BB8 | Laden: TP4056-Modul auf Stiftleiste, Laden und Hören nicht gleichzeitig (USB-Erkennung trennt die Last) | M | H5, T5 |
-| BB9 | Audio: PAM8403-Modul (HW-012) auf Stiftleiste, Versorgung per GPIO schaltbar, Mono-Mischer mit 3-poligem Jumper (Radio-L oder Mischer) | M | T6. BTL-Ausgang, Lautsprecher-Minus nie an Masse |
-| BB10 | 3.5-mm-Klinke mit Schaltkontakt, Line-Out stereo direkt vom Funkmodul | M | trennt den Lautsprecher beim Einstecken |
-| BB11 | Lautstärkebegrenzung für Kopfhörer | M | G5, Lösung offen (Poti oder Software, O7) |
+| BB9 | Audio: PAM8403-Modul (HW-012) auf Stiftleiste, Versorgung per GPIO schaltbar, Mono-Mischer mit 22 kΩ und 3-poligem Jumper (Radio-L oder Mischer) | M | T6. BTL-Ausgang, Lautsprecher-Minus nie an Masse |
+| BB10 | 3.5-mm-Klinke mit Schaltkontakt, stereo über einen Kopfhörerverstärker **TPA6132A2** (WQFN 3x3, 2.3 bis 5.5 V, 2.1 mA, 25 mW an 16 Ω, ohne Ausgangskondensatoren) | M | **Korrektur:** Der Si4732 liefert nur Line-Pegel (80 mV eff, Last mindestens 10 kΩ), er kann keine Kopfhörer treiben. Schaltkontakt an GPIO 6, Firmware schaltet die PAM8403-Versorgung ab. Der EN-Pin des Verstärkers hängt am Schaltkontakt, kein zusätzlicher GPIO nötig (Vorschlag, im Layout Polarität prüfen). Eingang über die 470 nF des RX-Boards gekoppelt, Verstärkung vor dem Layout festlegen |
+| BB11 | Lautstärkebegrenzung für Kopfhörer | M | G5. Der TPA6132A2 hat eine feste Maximalleistung (laut TI-Datenblatt unabhängig von der Versorgung). Verstärkung -6, 0, 3 oder 6 dB wählen. Zusätzlich Software-Limit (O7) |
 | BB12 | Steckplatz für optionales Bluetooth-Sendemodul mit Taster und Enable | K | F13, T6 |
 | BB13 | Antennenanschlüsse: BNC, Teleskop, Ferritstab per Kabel zum RX-Board, am Platinenrand | M | Ferritstab nicht auf dem Basisboard, weit weg von Akku, Lautsprecher, ESP32, Display, Lader |
 | BB14 | Messpunkte: 3V3, GND, Akku, Lastseite nach Schalter, Teiler-Ausgänge | M | Prototypmessungen (Strom, Spannung) |
@@ -75,7 +75,8 @@ Folgen:
 | Q1 | Repo `Funkbasis-ESP32`, Sprache Deutsch (festgelegt 2026-11-19) | erledigt |
 | Q2 | Stecker RX: 1x13 gegenüber Rev A mit 1x9, Lage der Leiste und Kodierung | offen |
 | Q3 | I2S-Reservepins 15, 18, 39, 47 bestätigen, MCLK ja oder nein, INT-Pin des RX-Boards | offen |
-| Q4 | Strombudget messen, LDO-Typ festlegen (Datenblatt LF33CV), Wellenjäger-Reserve klären | offen |
+| Q4 | Strombudget messen (LDO AP2112K-3.3 vorgeschlagen, Dropout und Abschaltschwelle im Breadboard-Test), Wellenjäger-Reserve klären | offen |
+| Q14 | Kopfhörerverstärker TPA6132A2: Testmodul oder Mini-Platine vor dem Layout beschaffen (Chip nur WQFN 3x3, bei JLCPCB bestückbar, von Hand ohne Heissluft nicht lötbar). Beschaltung und Verstärkung aus dem Datenblatt festlegen | offen |
 | Q5 | Reihenabstand der ESP32-Leisten messen, Pins 13 und 14 gegen Multimeter prüfen (Beschriftung des Clones) | offen |
 | Q6 | Display: Pinbelegung und Masse | offen |
 | Q7 | Module HW-012 (PAM8403) und TP4056: Masse und Pinreihenfolge | offen |
